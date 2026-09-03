@@ -1,0 +1,33 @@
+"""Tests for FreeAgentOptions normalization."""
+
+from __future__ import annotations
+
+from free_agent.types.options import FreeAgentOptions, MCPServerConfig, PluginRef
+
+
+def test_normalize_mcp_servers_from_dicts():
+    options = FreeAgentOptions(
+        mcp_servers={"fs": {"type": "stdio", "command": "npx", "args": ["-y", "x"]}}
+    )
+    normalized = options.normalize_mcp_servers()
+    assert isinstance(normalized["fs"], MCPServerConfig)
+    assert normalized["fs"].command == "npx"
+    assert normalized["fs"].args == ["-y", "x"]
+
+
+def test_normalize_mcp_servers_passthrough():
+    cfg = MCPServerConfig(type="http", url="https://example.com/mcp")
+    options = FreeAgentOptions(mcp_servers={"remote": cfg})
+    assert options.normalize_mcp_servers()["remote"] is cfg
+
+
+def test_normalize_plugins():
+    options = FreeAgentOptions(plugins=[{"type": "local", "path": "./my-plugin"}])
+    refs = options.normalize_plugins()
+    assert isinstance(refs[0], PluginRef)
+    assert refs[0].path == "./my-plugin"
+
+
+def test_default_allowed_tools_is_wildcard():
+    options = FreeAgentOptions()
+    assert options.allowed_tools == ["*"]

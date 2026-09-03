@@ -1,0 +1,25 @@
+site_name: Free-Agent-SDK
+site_description: 开源、模型无关、纯代码实现的自主 AI Agent SDK
+site_author: free-agent-sdk
+repo_url: https://github.com/free-agent-sdk/free-agent-sdk
+theme:
+  name: readthedocs
+  locale: zh_CN
+
+nav:
+  - 首页: index.md
+  - 快速开始: quickstart.md
+  - 配置选项: configuration.md
+  - 工具系统: tools.md
+  - 钩子与权限: hooks.md
+  - MCP 网关: mcp.md
+  - Skills 与子智能体: skills-subagents.md
+  - 插件系统: plugins.md
+  - 链路追踪: tracing.md
+  - API 参考: api.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
