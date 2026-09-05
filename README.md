@@ -1,23 +1,23 @@
 # free-agent-sdk
 
-Agent framework for all — 一个完全开源、模型无关、纯代码实现的自主 AI Agent SDK。
+Agent framework for all — a fully open-source, model-agnostic, pure-code autonomous AI Agent SDK.
 
-基于 [ReAct](https://arxiv.org/abs/2210.03629)（Reasoning + Acting）理论框架构建，参考 Claude Agent SDK 的设计理念，提供思考-行动-观察循环、工具系统、插件、MCP、Skills、子智能体、钩子、权限与链路追踪等能力。
+Built on the [ReAct](https://arxiv.org/abs/2210.03629) (Reasoning + Acting) framework and inspired by the design of the Claude Agent SDK, it provides a thought-action-observation loop, a tool system, plugins, MCP, Skills, subagents, hooks, permissions, and tracing.
 
-## 特性
+## Features
 
-- **模型无关**：支持任意 OpenAI-compatible 接口（OpenAI、本地 LLaMA.cpp / Ollama / vLLM 等）。
-- **纯代码实现**：全部逻辑使用 Python 源码，不依赖商业闭源二进制。
-- **ReAct 循环**：Think → Act → Observe 的自主执行引擎。
-- **丰富组件**：内置工具、钩子系统、权限策略、MCP 网关、Skills、子智能体、插件、OpenTelemetry 追踪。
+- **Model-agnostic**: works with any OpenAI-compatible API (OpenAI, local LLaMA.cpp / Ollama / vLLM, etc.).
+- **Pure code implementation**: all logic is written in Python source, with no dependency on commercial closed-source binaries.
+- **ReAct loop**: an autonomous execution engine of Think → Act → Observe.
+- **Rich components**: built-in tools, hook system, permission policies, MCP gateway, Skills, subagents, plugins, and OpenTelemetry tracing.
 
-## 安装
+## Installation
 
 ```bash
 pip install -e .
 ```
 
-## 快速开始
+## Quick Start
 
 ```python
 import asyncio
@@ -43,24 +43,24 @@ async def main():
 asyncio.run(main())
 ```
 
-更多示例见 [`examples/`](examples/)。
+See [`examples/`](examples/) for more examples.
 
-## 项目结构
+## Project Structure
 
 ```
 src/free_agent/
-├── client.py          # FreeAgentClient / query 入口
-├── loop/              # Agent Loop 引擎（ReAct 循环）
-├── llm/               # LLM 适配层（OpenAI-compatible）
-├── tools/             # 工具系统 + 内置工具（Read/Write/Edit/Bash/Grep/Glob）
-├── hooks/             # 钩子系统
-├── permissions/       # 权限系统
-├── mcp/               # MCP 网关（stdio / http / in-process）
-├── skills/            # Skills 系统（SKILL.md）
-├── subagents/         # 子智能体系统
-├── plugins/           # 插件系统
-├── tracing/           # OpenTelemetry 链路追踪
-└── types/             # 核心类型（Message / Options）
+├── client.py          # FreeAgentClient / query entry point
+├── loop/              # Agent Loop engine (ReAct loop)
+├── llm/               # LLM adapter layer (OpenAI-compatible)
+├── tools/             # Tool system + built-in tools (Read/Write/Edit/Bash/Grep/Glob)
+├── hooks/             # Hook system
+├── permissions/       # Permission system
+├── mcp/               # MCP gateway (stdio / http / in-process)
+├── skills/            # Skills system (SKILL.md)
+├── subagents/         # Subagent system
+├── plugins/           # Plugin system
+├── tracing/           # OpenTelemetry tracing
+└── types/             # Core types (Message / Options)
 ```
 
 ## License
